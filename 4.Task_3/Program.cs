@@ -10,32 +10,33 @@ namespace _4.Task_3
     {
         static void Main(string[] args)
         {
-            bool isWork = true;
             int resault;
-
-            while (isWork)
-            {
-                ParsingString(out resault);
-                
-                if (resault != 0)
-                {
-                    Console.WriteLine(resault);
-                    isWork = false;
-                }
-            }
+            ParsingString(out resault);
+            Console.WriteLine(resault);            
         }
 
         static int ParsingString(out int resault)
         {
-            string userInput = Console.ReadLine();
-            int.TryParse(userInput, out int resultParse);
-            
-            if (resultParse == 0)
+            bool isWork = true;
+            resault = 0;
+
+            while (isWork)
             {
-                Console.WriteLine("Input error. Please, input any number:");
+                string userInput = Console.ReadLine();
+                int.TryParse(userInput, out int resaultParse);                
+
+                if (resaultParse != 0)
+                {                    
+                    resault = resaultParse;
+                    isWork = false;
+                }
+
+                else
+                {
+                    Console.WriteLine("Input error. Please, input any number:");
+                }                
             }
 
-            resault = resultParse;
             return resault;
         }
     }
