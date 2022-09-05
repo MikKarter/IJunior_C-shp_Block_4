@@ -10,12 +10,12 @@ namespace _4.Task_3
     {
         static void Main(string[] args)
         {
-            int resault;
-            ParsingString(out resault);
-            Console.WriteLine(resault);            
+            int resault = 0;
+            ConvertInNumber(resault);
+            Console.WriteLine(resault);
         }
 
-        static int ParsingString(out int resault)
+        static int ConvertInNumber(int resault)
         {
             bool isWork = true;
             resault = 0;
@@ -23,10 +23,10 @@ namespace _4.Task_3
             while (isWork)
             {
                 string userInput = Console.ReadLine();
-                int.TryParse(userInput, out int resaultParse);                
+                int.TryParse(userInput, out int resaultParse);
 
                 if (resaultParse != 0)
-                {                    
+                {
                     resault = resaultParse;
                     isWork = false;
                 }
@@ -34,7 +34,7 @@ namespace _4.Task_3
                 else
                 {
                     Console.WriteLine("Input error. Please, input any number:");
-                }                
+                }
             }
 
             return resault;
