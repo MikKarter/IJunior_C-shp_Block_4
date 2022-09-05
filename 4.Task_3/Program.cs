@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,28 +9,32 @@ namespace _4.Task_3
     internal class Program
     {
         static void Main(string[] args)
-        {        
+        {
             bool isWork = true;
+            int resault;
 
             while (isWork)
-            {
-                string userInput = Console.ReadLine();
-                StringParce(userInput,ref isWork);
+            {                
+                ParsingString(out resault);
+
+                if (resault == 0)
+                {
+                    Console.WriteLine("Input error. Please, input any number:");
+                }
+                else
+                {
+                    Console.WriteLine(resault);
+                    isWork = false;
+                }
             }
         }
 
-        static void StringParce (string inputText, ref bool value)
+        static int ParsingString(out int resault)
         {
-            int.TryParse(inputText, out int resultParse);
-            if (resultParse == 0)
-            {
-                Console.WriteLine("Input error. Please, input any number:");
-            }
-            else
-            {
-                Console.WriteLine(resultParse);
-                value = false;
-            }
+            string userInput = Console.ReadLine();
+            int.TryParse(userInput, out int resultParse);
+            resault = resultParse;
+            return resault;
         }
     }
 }
