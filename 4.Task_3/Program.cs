@@ -14,14 +14,10 @@ namespace _4.Task_3
             int resault;
 
             while (isWork)
-            {                
+            {
                 ParsingString(out resault);
-
-                if (resault == 0)
-                {
-                    Console.WriteLine("Input error. Please, input any number:");
-                }
-                else
+                
+                if (resault != 0)
                 {
                     Console.WriteLine(resault);
                     isWork = false;
@@ -33,6 +29,12 @@ namespace _4.Task_3
         {
             string userInput = Console.ReadLine();
             int.TryParse(userInput, out int resultParse);
+            
+            if (resultParse == 0)
+            {
+                Console.WriteLine("Input error. Please, input any number:");
+            }
+
             resault = resultParse;
             return resault;
         }
