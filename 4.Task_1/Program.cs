@@ -32,7 +32,7 @@ namespace _4.Task_1
                         ShowDossier(dossier, position);
                         break;
                     case "3":
-                        DellDossier(ref dossier, ref position);
+                        DeleteDossier(ref dossier, ref position);
                         break;
                     case "4":
                         FindDossier(dossier, position);
@@ -45,7 +45,7 @@ namespace _4.Task_1
             Console.WriteLine("Выход из программы");
         }
 
-        static string[] ExtendedArray(ref string[] array)
+        static string[] ExpansionArray(ref string[] array)
         {
             string[] tempArray = new string[array.Length + 1];
 
@@ -58,17 +58,20 @@ namespace _4.Task_1
             return array;
         }
 
-        static string[] CompressedArray (ref string[] array, int indexForCompressed)
+        static string[] CompressionArray (ref string[] array, int indexForCompressed)
         {
             string[] tempArray = new string[array.Length -1];
+
             for (int i=0; i< indexForCompressed-1; i++)
             {
                 tempArray[i] = array[i];
             }
+
             for (int i=indexForCompressed; i<array.Length; i++)
             {
                 tempArray[i - 1] = array[i];
             }
+
             array = tempArray;
             return array;
         }
@@ -76,10 +79,10 @@ namespace _4.Task_1
         static void AddDossier(ref string[] dossier, ref string[] position)
         {
             Console.WriteLine("Заполните ФИО сотрудника:");
-            ExtendedArray(ref dossier);
+            ExpansionArray(ref dossier);
             dossier[dossier.Length - 1] = Console.ReadLine();
             Console.WriteLine("На какой должности сотрудник работает?");
-            ExtendedArray(ref position);
+            ExpansionArray(ref position);
             position[position.Length - 1] = Console.ReadLine();
             Console.WriteLine();
         }
@@ -100,12 +103,12 @@ namespace _4.Task_1
             Console.WriteLine();
         }
 
-        static void DellDossier(ref string[] dossier, ref string[] position)
+        static void DeleteDossier(ref string[] dossier, ref string[] position)
         {
             Console.WriteLine("Досье под каким номером нужно удалить?");
             int indexForDeleating = Convert.ToInt32(Console.ReadLine());
-            CompressedArray(ref dossier, indexForDeleating);
-            CompressedArray(ref position, indexForDeleating);
+            CompressionArray(ref dossier, indexForDeleating);
+            CompressionArray(ref position, indexForDeleating);
         }
 
         static void FindDossier(string[] dossier, string[] position)
