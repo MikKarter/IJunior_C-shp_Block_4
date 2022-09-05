@@ -10,15 +10,14 @@ namespace _4.Task_3
     {
         static void Main(string[] args)
         {
-            int resault = 0;
-            ConvertInNumber(resault);
-            Console.WriteLine(resault);
+            int number = GetNumber();           
+            Console.WriteLine(number);
         }
 
-        static int ConvertInNumber(int resault)
+        static int GetNumber()
         {
             bool isWork = true;
-            resault = 0;
+            int resault = 0;
 
             while (isWork)
             {
