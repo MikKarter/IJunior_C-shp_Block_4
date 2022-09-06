@@ -1,0 +1,8 @@
+D:\Unity\Learning_iJunior\Функции\4.Task_5\bin\Debug\4.Task_5.exe.config
+D:\Unity\Learning_iJunior\Функции\4.Task_5\bin\Debug\4.Task_5.exe
+D:\Unity\Learning_iJunior\Функции\4.Task_5\bin\Debug\4.Task_5.pdb
+D:\Unity\Learning_iJunior\Функции\4.Task_5\obj\Debug\4.Task_5.csproj.AssemblyReference.cache
+D:\Unity\Learning_iJunior\Функции\4.Task_5\obj\Debug\4.Task_5.csproj.SuggestedBindingRedirects.cache
+D:\Unity\Learning_iJunior\Функции\4.Task_5\obj\Debug\4.Task_5.csproj.CoreCompileInputs.cache
+D:\Unity\Learning_iJunior\Функции\4.Task_5\obj\Debug\4.Task_5.exe
+D:\Unity\Learning_iJunior\Функции\4.Task_5\obj\Debug\4.Task_5.pdb
