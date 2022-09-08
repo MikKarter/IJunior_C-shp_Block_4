@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,7 +31,7 @@ namespace _4.Task_5
             return tempArray;
         }
 
-        static int[] Shuffle(ref int[] mainArray)
+        static void Shuffle(ref int[] mainArray)
         {
             Random tempNumber = new Random();           
             
@@ -43,8 +43,6 @@ namespace _4.Task_5
                 mainArray[i]=mainArray[tempRandomi];
                 mainArray[tempRandomi] = tempValue;
             }
-
-            return mainArray;
         }
 
         static void WriteArray(int[] array)
@@ -53,6 +51,7 @@ namespace _4.Task_5
             {
                 Console.Write(array[i] + " ");
             }
+            
             Console.WriteLine();
         }
     }
