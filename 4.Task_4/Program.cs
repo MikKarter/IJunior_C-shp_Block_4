@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,63 +14,66 @@ namespace _4.Task_4
             Console.CursorVisible = false;
 
             bool isPlaying = true;
-            int playerX;
-            int playerY;
-            int playerDX = 0;
-            int playerDY = 0;
-            char[,] map = ReadMap("Map1", out playerX, out playerY);
-            Drawmap(map);
+            int playerPositionX;
+            int playerPositionY;
+            int playerDirectionX = 0;
+            int playerDirectionY = 0;
+            char[,] map = ReadMap("Map1", out playerPositionX, out playerPositionY);
+            DrawMap(map);
 
             while (isPlaying)
             {
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey(true);
-                    ChangePosition(ref key,ref playerDX,ref playerDY);
+                    ChangePosition(ref key,ref playerDirectionX,ref playerDirectionY);
                     
-                    if (map[playerX + playerDX, playerY + playerDY] != '*')
+                    if (map[playerPositionX + playerDirectionX, playerPositionY + playerDirectionY] != '*')
                     {
-                        MovePlayer(ref playerX, ref playerY, playerDX, playerDY);
+                        MovePlayer(ref playerPositionX, ref playerPositionY, playerDirectionX, playerDirectionY);
                     }
-                }
-                
+                }                
             }
         }
 
-        static void ChangePosition (ref ConsoleKeyInfo key, ref int DX, ref int DY)
+        static void ChangePosition (ref ConsoleKeyInfo key, ref int directionX, ref int directionY)
         {
             switch (key.Key)
             {
                 case ConsoleKey.UpArrow:
-                    DX = -1; DY = 0;
+                    directionX = -1;
+                    directionY = 0;
                     break;
                 case ConsoleKey.DownArrow:
-                    DX = 1; DY = 0;
+                    directionX = 1; 
+                    directionY = 0;
                     break;
                 case ConsoleKey.RightArrow:
-                    DY = 1; DX = 0;
+                    directionY = 1;
+                    directionX = 0;
                     break;
                 case ConsoleKey.LeftArrow:
-                    DY = -1; DX = 0;
+                    directionY = -1;
+                    directionX = 0;
                     break;
             }
 
         }
 
-        static void MovePlayer(ref int X, ref int Y, int DX, int DY)
+        static void MovePlayer(ref int positionX, ref int positionY, int directionX, int directionY)
         {
-            Console.SetCursorPosition(Y, X);
+            Console.SetCursorPosition(positionY, positionX);
             Console.Write(' ');
-            X += DX;
-            Y += DY;
-            Console.SetCursorPosition(Y, X);
+            positionX += directionX;
+            positionY += directionY;
+            Console.SetCursorPosition(positionY, positionX);
             Console.Write('#');
         }
 
-        static char[,] ReadMap(string mapName, out int playerX, out int playerY)
+        static char[,] ReadMap(string mapName, out int playerPositionX, out int playerPositionY)
         {
-            playerX = 0;
-            playerY = 0;
+            playerPositionX = 0;
+            playerPositionY = 0;
             string[] newFile = File.ReadAllLines($"Maps/{mapName}.txt");
             char[,] map = new char[newFile.Length, newFile[0].Length];
             for (int i = 0; i < map.GetLength(0); i++)
@@ -78,17 +81,18 @@ namespace _4.Task_4
                 for (int j = 0; j < map.GetLength(1); j++)
                 {
                     map[i, j] = newFile[i][j];
+
                     if (map[i, j] == '#')
                     {
-                        playerX = i;
-                        playerY = j;
+                        playerPositionX = i;
+                        playerPositionY = j;
                     }
                 }
             }
             return map;
         }
 
-        static void Drawmap(char[,] map)
+        static void DrawMap(char[,] map)
         {
             for (int i = 0; i < map.GetLength(0); i++)
             {
@@ -96,13 +100,9 @@ namespace _4.Task_4
                 {
                     Console.Write(map[i, j]);
                 }
+
                 Console.WriteLine();
             }
         }
-
-        //static void PlayerController()
-        //{
-        //    Console.KeyAvailable = ConsoleKey.UpArrow;
-        //}
     }
 }
