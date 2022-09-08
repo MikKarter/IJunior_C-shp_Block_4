@@ -12,7 +12,7 @@ namespace _4.Task_5
         {
             int[] mainArray = CreatingNewArray();
             WriteArray(mainArray);
-            Shuffle(ref mainArray);
+            Shuffle(mainArray);
             WriteArray(mainArray);
         }
 
@@ -31,13 +31,13 @@ namespace _4.Task_5
             return tempArray;
         }
 
-        static void Shuffle(ref int[] mainArray)
+        static void Shuffle(int[] mainArray)
         {
-            Random tempNumber = new Random();           
+            Random randomNumber = new Random();           
             
             for (int i = 0; i < mainArray.Length; i++)
             {
-                int tempRandomi = tempNumber.Next(0, mainArray.Length);
+                int tempRandomi = randomNumber.Next(0, mainArray.Length);
                 int tempValue;
                 tempValue = mainArray[i];
                 mainArray[i]=mainArray[tempRandomi];
@@ -51,7 +51,7 @@ namespace _4.Task_5
             {
                 Console.Write(array[i] + " ");
             }
-            
+
             Console.WriteLine();
         }
     }
