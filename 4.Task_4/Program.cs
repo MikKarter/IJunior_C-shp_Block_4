@@ -26,7 +26,7 @@ namespace _4.Task_4
                 if (Console.KeyAvailable)
                 {
                     ConsoleKeyInfo key = Console.ReadKey(true);
-                    ChangePosition(ref key,ref playerDirectionX,ref playerDirectionY);
+                    ChangePosition(key,ref playerDirectionX,ref playerDirectionY);
                     
                     if (map[playerPositionX + playerDirectionX, playerPositionY + playerDirectionY] != '*')
                     {
@@ -36,7 +36,7 @@ namespace _4.Task_4
             }
         }
 
-        static void ChangePosition (ref ConsoleKeyInfo key, ref int directionX, ref int directionY)
+        static void ChangePosition (ConsoleKeyInfo key, ref int directionX, ref int directionY)
         {
             switch (key.Key)
             {
@@ -57,7 +57,6 @@ namespace _4.Task_4
                     directionX = 0;
                     break;
             }
-
         }
 
         static void MovePlayer(ref int positionX, ref int positionY, int directionX, int directionY)
@@ -76,6 +75,7 @@ namespace _4.Task_4
             playerPositionY = 0;
             string[] newFile = File.ReadAllLines($"Maps/{mapName}.txt");
             char[,] map = new char[newFile.Length, newFile[0].Length];
+
             for (int i = 0; i < map.GetLength(0); i++)
             {
                 for (int j = 0; j < map.GetLength(1); j++)
@@ -89,6 +89,7 @@ namespace _4.Task_4
                     }
                 }
             }
+
             return map;
         }
 
